@@ -8,12 +8,9 @@ MODULES		?=
 .PHONY: all test install
 
 all:
-	@$(INSTALL) -d resty_modules/lualib/resty
-	@test -f resty_modules/lualib/resty/string.lua || curl -s -o resty_modules/lualib/resty/string.lua https://raw.githubusercontent.com/openresty/lua-resty-string/master/lib/resty/string.lua
 
 install: all
 	$(INSTALL) -d $(DESTDIR)$(LUA_LIB_DIR)/resty
-	$(INSTALL) resty_modules/lualib/resty/*.lua $(DESTDIR)$(LUA_LIB_DIR)/resty
 	$(INSTALL) lib/resty/*.lua $(DESTDIR)$(LUA_LIB_DIR)/resty
 
 test: install
